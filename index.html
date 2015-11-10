@@ -2,9 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Jeviteca</title>
+    <!-- Cargamos los estilos de Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <!-- Cargamos los estilos de Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Cargamos los estilos de angular-loading-bar -->
+    <link rel="stylesheet" href="styles/loading-bar.min.css" />
+    <!-- Cargamos los estilos de la aplicación -->
+    <link rel="stylesheet" href="styles/jeviteca.css" />
 </head>
-<body>
+<body ng-app="jeviteca">
+
+<!-- Contenedor general de la aplicación -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <!-- Cabecera -->
+            <header>
+                <h1>Jeviteca</h1>
+            </header>
+            <!-- Barra de navegación -->
+            <nav ng-controller="BarraNavegacionCtrl" class="barra-navegacion">
+                <ul class="nav nav-tabs">
+                    <li role="presentation" ng-class="{ 'active': rutaEsAlbums() }">
+                        <a href="#/albums">Álbumes</a>
+                    </li>
+                    <li role="presentation" ng-class="{ 'active': rutaEsBands() }">
+                        <a href="#/bands">Bandas</a>
+                    </li>
+                    <li role="presentation" ng-class="{ 'active': rutaEsGenres() }">
+                        <a href="#/genres">Géneros</a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- Contenedor de las vistas -->
+            <section ng-view></section>
+        </div>
+    </div>
+</div>
+
+<!-- Cargamos la librería de AngularJS -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js"></script>
+<!-- Cargamos dependencias de terceros -->
+<script src="vendor/loading-bar.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.min.js"></script>
+<!-- Cargamos app.js -->
+<script src="scripts/app.js"></script>
+<!-- Cargamos los constants -->
+<script src="scripts/constants/Properties.js"></script>
+<!-- Cargamos los providers -->
+<script src="scripts/providers/Backend.js"></script>
+<!-- Cargamos los filtros -->
+<script src="scripts/filters/AlbumFirma.js"></script>
+<!-- Cargamos los controladores -->
+<script src="scripts/controllers/BarraNavegacion.js"></script>
+<script src="scripts/controllers/AlbumList.js"></script>
+<script src="scripts/controllers/BandList.js"></script>
+<!-- Cargamos las directivas -->
+<script src="scripts/directives/AlbumItem.js"></script>
+<script src="scripts/directives/BandItem.js"></script>
+<script src="scripts/directives/AlbumFav.js"></script>
 
 </body>
 </html>
