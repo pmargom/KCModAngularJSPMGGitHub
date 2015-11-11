@@ -10,14 +10,14 @@ angular.module("jeviteca").directive("elementoAlbum", function() {
       // Con scope establecemos la interfaz de comunicación.
       scope: {
          album: "=",
-         onPostClick: "&"
+         onItemClick: "&"
       },
 
       link: function(scope, elemento) {
 
          elemento.bind("click", function() {
 
-            scope.onPostClick({ idAlbum: scope.album.id });
+            scope.onItemClick({ idAlbum: scope.album.id });
          });
       }
    };

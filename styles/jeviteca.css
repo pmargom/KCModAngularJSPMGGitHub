@@ -28,6 +28,10 @@ table tbody tr:hover {
     cursor: pointer;
 }
 
+.favorito-oculto {
+    display: none;
+}
+
 .coleccion-table table,
 .mis-items table {
     margin-top: 30px;

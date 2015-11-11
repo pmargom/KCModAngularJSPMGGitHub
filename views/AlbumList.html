@@ -13,7 +13,7 @@
         <tr ng-repeat="album in albums track by album.id"
             elemento-album
             album="album"
-            on-post-click="navegar(idAlbum)"></tr>
+            on-item-click="navegar(idAlbum)"></tr>
         </tbody>
     </table>
     <!-- Pintamos un control de paginación. Esto es una directiva de Angular UI Bootstrap -->

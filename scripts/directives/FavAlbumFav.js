@@ -4,8 +4,7 @@ angular.module("jeviteca").directive("favAlbumFav", function(Backend) {
       restrict: "E",
       templateUrl: "views/FavAlbumFav.html",
       scope: {
-         album: "=",
-         hideFav: "="
+         album: "="
       },
       link: function (scope) {
 
@@ -29,6 +28,8 @@ angular.module("jeviteca").directive("favAlbumFav", function(Backend) {
                   //debugger;
                   var index = favAlbums.indexOf(item); // en teoría, item es igual que scope.album. Pero en la práctica no!!!
                   favAlbums.splice(index, 1);
+                  angular.element("#album" + scope.album.id).fadeOut('slow');
+
                }
                localStorage.setItem("favAlbums", JSON.stringify(favAlbums));
             }
@@ -41,8 +42,8 @@ angular.module("jeviteca").directive("favAlbumFav", function(Backend) {
          // comprobar si el album está marcado como favorito o no
          scope.isFav = function() {
 
-            debugger;
-            scope.hideFav = false;
+            //debugger;
+
             if (typeof(Storage) !== "undefined") {
 
                var favAlbums = JSON.parse(localStorage.getItem("favAlbums"));
