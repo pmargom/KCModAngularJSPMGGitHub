@@ -31,11 +31,11 @@ angular.module("jeviteca").controller("AlbumListCtrl", function($scope, Albums, 
    // Forzamos el cambio de página para que traiga la primera al entrar a la vista.
    $scope.paginador.cambioDePagina();
 
-   // Redirigir el navegador al detalle del post indicado.
-   $scope.navegar = function(idPost) {
+   // Redirigir el navegador al detalle del album indicado.
+   $scope.navegar = function(idAlbum) {
 
       // Forzamos el ciclo digest con ejecutando la redirección dentro de un $timeout.
-      $timeout(function() { $location.path("/detalle/" + idPost); }, 100);
+      $timeout(function() { $location.path("/detalle/" + idAlbum); }, 100);
    };
 
 });

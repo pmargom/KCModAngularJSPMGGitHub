@@ -2,7 +2,8 @@
 <div class="favorito">
     <div>
         <div>
-            <i class="fa fa-star-o fa-2x" ng-click="markAsFav($event)"></i>
+            <!--<i class="fa fa-2x" ng-class="{ 'fa-star': esAlbumFavorito(), 'fa-star-o': !esAlbumFavorito() }" ng-click="markAsFav($event)"></i> -->
+            <i class="fa fa-2x" ng-class="{ 'fa-star': isFav(), 'fa-star-o': !isFav() }" ng-click="markAsFav($event)"></i>
         </div>
     </div>
 </div>
