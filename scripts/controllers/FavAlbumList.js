@@ -1,10 +1,11 @@
 
 // Controlador encargado de la lógica correspondiente con vista de la lista de álbumes.
-angular.module("jeviteca").controller("AlbumListCtrl", function($scope, Albums, $location, $timeout) {
+angular.module("jeviteca").controller("FavAlbumListCtrl", function($scope, Albums, $location, $timeout) {
 
    // Almacenamos en local la lista de álbumes para que no se muestren
    // todos directamente en la vista.
-   var albums = Albums.data;
+   //debugger;
+   var albums = Albums; // aquí no uso Album.data porque lo que llega no lo de vuelve $http.get sino favAlbums leído del localstorage
    $scope.nItems = albums.length;
 
    // Establecemos las propiedades del paginador.

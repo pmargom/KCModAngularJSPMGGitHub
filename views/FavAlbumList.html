@@ -1,6 +1,6 @@
 <div class="coleccion-table">
     <!-- Pintamos una tabla para mostrar los álbumes -->
-    <div><a href="#/albums/Favourites">See only favourites</a></div>
+    <a href="#/albums">Albums</a> > Favourites
     <table class="table">
         <thead>
             <th></th>
@@ -11,8 +11,9 @@
         </thead>
         <tbody>
         <tr ng-repeat="album in albums track by album.id"
-            elemento-album
+            elemento-fav-album
             album="album"
+            hideFav="false"
             on-post-click="navegar(idAlbum)"></tr>
         </tbody>
     </table>

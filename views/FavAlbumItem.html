@@ -1,10 +1,10 @@
-<td>
-<album-fav album="album"></album-fav>
+<td ng-hide="isFav()">
+    <fav-album-fav album="album"></fav-album-fav>
 </td>
-<td>
+<td ng-hide="isFav()">
     <img ng-src="images/{{ ::album.image }}" ng-if="::album.image" alt="Imagen" width="64px" height="64px" class="img-rounded" />
 </td>
-<td>
+<td ng-hide="isFav()">
     <p>{{ ::album.title }}</p>
     <div>
         <small>
@@ -12,9 +12,9 @@
         </small>
     </div>
 </td>
-<td>
+<td ng-hide="isFav()">
     <p>{{ ::album.genre.name}}</p>
 </td>
-<td class="celda-centrada">
+<td class="celda-centrada" ng-hide="isFav()">
     {{ ::album.tracklist.length }}
 </td>

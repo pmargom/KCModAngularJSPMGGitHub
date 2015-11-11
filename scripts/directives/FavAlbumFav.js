@@ -1,10 +1,11 @@
-angular.module("jeviteca").directive("albumFav", function(Backend) {
+angular.module("jeviteca").directive("favAlbumFav", function(Backend) {
 
    return {
       restrict: "E",
-      templateUrl: "views/AlbumFav.html",
+      templateUrl: "views/FavAlbumFav.html",
       scope: {
-         album: "="
+         album: "=",
+         hideFav: "="
       },
       link: function (scope) {
 
@@ -12,7 +13,7 @@ angular.module("jeviteca").directive("albumFav", function(Backend) {
 
             // Paramos la propagación del evento click para evitar que se dispare el click del elemento <tr>.
             evento.stopPropagation();
-debugger;
+//debugger;
             // marcamos el elemento como favorito y lo guardamos en el local storage.
             if (typeof(Storage) !== "undefined") {
                // primero, recupero la lista de de favoritos que ya pudiera existir
@@ -40,6 +41,8 @@ debugger;
          // comprobar si el album está marcado como favorito o no
          scope.isFav = function() {
 
+            debugger;
+            scope.hideFav = false;
             if (typeof(Storage) !== "undefined") {
 
                var favAlbums = JSON.parse(localStorage.getItem("favAlbums"));

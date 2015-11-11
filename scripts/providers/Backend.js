@@ -13,6 +13,17 @@ angular.module("jeviteca").provider("Backend", function($httpProvider) {
                return $http.get("data/albums.json");
             },
 
+            getFavAlbums: function(){
+
+               var favAlbums = [];
+               //debugger;
+               if (typeof(Storage) !== "undefined") {
+
+                  favAlbums = JSON.parse(localStorage.getItem("favAlbums"));
+               }
+               return favAlbums;
+            },
+
             // obtenemos la lista de bandas
             getBands: function() {
                return $http.get("data/bands.json");

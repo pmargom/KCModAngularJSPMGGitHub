@@ -35,6 +35,16 @@ angular.module("jeviteca").config(function($routeProvider) {
       }
    });
 
+   $routeProvider.when("/albums/Favourites", {
+      controller: "FavAlbumListCtrl",
+      templateUrl: "views/FavAlbumList.html",
+      resolve: {
+         Albums: ["Backend", function(Backend) {
+            return Backend.getFavAlbums();
+         }]
+      }
+   });
+
    // Definir la ruta de "Bands".
    $routeProvider.when("/bands", {
       controller: "BandListCtrl",
