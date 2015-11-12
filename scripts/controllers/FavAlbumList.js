@@ -6,7 +6,7 @@ angular.module("jeviteca").controller("FavAlbumListCtrl", function($scope, Album
    // todos directamente en la vista.
    //debugger;
    var albums = Albums; // aquí no uso Album.data porque lo que llega no lo de vuelve $http.get sino favAlbums leído del localstorage
-   var nItems = 0;
+   $scope.nItems = 0;
 
    if (albums !== null) $scope.nItems = albums.length;
 
@@ -26,7 +26,7 @@ angular.module("jeviteca").controller("FavAlbumListCtrl", function($scope, Album
       paginaActual: 1,
 
       // Total de elementos -albums-.
-      totalElementos: nItems,
+      totalElementos: $scope.nItems,
 
       // Tamaño de página.
       elementosPorPagina: 4
@@ -38,6 +38,13 @@ angular.module("jeviteca").controller("FavAlbumListCtrl", function($scope, Album
       alert('navegando fav album')
       // Forzamos el ciclo digest con ejecutando la redirección dentro de un $timeout.
       //$timeout(function() { $location.path("/detalle/" + idAlbum); }, 100);
+   };
+
+   $scope.deleteFav = function(newNumberOfItems){
+      debugger;
+      alert('deleteFav: nitems: ' + $scope.nItems);
+      alert('deleteFav: newNumberOfItems: ' + newNumberOfItems);
+
    };
 
    // bringing the first page of results

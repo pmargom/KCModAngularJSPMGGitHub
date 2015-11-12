@@ -4,15 +4,16 @@ angular.module("jeviteca").directive("favAlbumFav", function(Backend) {
       restrict: "E",
       templateUrl: "views/FavAlbumFav.html",
       scope: {
-         album: "="
+         album: "=",
+         numItems: "=",
+         onStarChange: "&"
+
       },
-      link: function (scope) {
+      link: function (scope, elemento) {
 
-         scope.markAsFav = function(evento) {
+         elemento.bind("click", function() {
 
-            // Paramos la propagación del evento click para evitar que se dispare el click del elemento <tr>.
-            evento.stopPropagation();
-//debugger;
+            debugger;
             // marcamos el elemento como favorito y lo guardamos en el local storage.
             if (typeof(Storage) !== "undefined") {
                // primero, recupero la lista de de favoritos que ya pudiera existir
@@ -25,11 +26,14 @@ angular.module("jeviteca").directive("favAlbumFav", function(Backend) {
                   favAlbums.push(scope.album);
                }
                else {
-                  //debugger;
+                  debugger;
                   var index = favAlbums.indexOf(item); // en teoría, item es igual que scope.album. Pero en la práctica no!!!
                   favAlbums.splice(index, 1);
+                  // hide the row
                   angular.element("#album" + scope.album.id).fadeOut('slow');
-
+                  // update the rows counter
+                  //angular.element("#nRowsFav").html(favAlbums.length)
+                  scope.numItems = favAlbums.length;
                }
                localStorage.setItem("favAlbums", JSON.stringify(favAlbums));
             }
@@ -37,27 +41,10 @@ angular.module("jeviteca").directive("favAlbumFav", function(Backend) {
                alert("Atención!: Su navegador no permite web storage.");
             }
 
-         };
+            // configuro la llamada al evetno y los parámetros que serán pasados
+            scope.onFavStarClick({ newNumberOfItems: scope.numItems });
 
-         // comprobar si el album está marcado como favorito o no
-         scope.isFav = function() {
-
-            //debugger;
-
-            if (typeof(Storage) !== "undefined") {
-
-               var favAlbums = JSON.parse(localStorage.getItem("favAlbums"));
-               if (favAlbums === null){
-                  return false;
-               }
-               var item = _.where(favAlbums, {id: scope.album.id});
-               return item.length !== 0;
-            }
-            else {
-               alert("Atención!: Su navegador no permite web storage.");
-               return false;
-            }
-         };
+         });
 
       }
    };
