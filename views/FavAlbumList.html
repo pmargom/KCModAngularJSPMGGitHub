@@ -13,14 +13,14 @@
         <tr id="album{{album.id}}" ng-repeat="album in albums track by album.id"
             elemento-fav-album
             album="album"
-            num-items="nItems"
-            on-fav-item-click="navegar(idAlbum)"
+            albums="albums"
+            on-album-click="navegar(idAlbum)"
             ></tr>
         </tbody>
     </table>
     <!-- Pintamos un control de paginación. Esto es una directiva de Angular UI Bootstrap -->
     <div class="panel panel-default">
-        <div class="panel-footer"><span id="nRowsFav">{{ albums.length }}</span> rows</div>
+        <div class="panel-footer"><span id="nRowsFav">{{ nItems }}</span> rows</div>
     </div>
     <uib-pagination
             ng-change="paginador.cambioDePagina()"

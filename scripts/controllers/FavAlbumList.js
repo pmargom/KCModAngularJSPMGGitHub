@@ -40,10 +40,18 @@ angular.module("jeviteca").controller("FavAlbumListCtrl", function($scope, Album
       //$timeout(function() { $location.path("/detalle/" + idAlbum); }, 100);
    };
 
-   $scope.deleteFav = function(newNumberOfItems){
-      debugger;
-      alert('deleteFav: nitems: ' + $scope.nItems);
-      alert('deleteFav: newNumberOfItems: ' + newNumberOfItems);
+   $scope.deleteFav = function(idAlbum){
+
+      //var item = _.find(albums, function(it){ return it.id === idAlbum; });
+      //if (typeof(item) !== "undefined"){
+      //
+      //   debugger;
+      //   var albums = Albums;
+      //   var index = albums.indexOf(item);
+      //   albums.splice(index, 1);
+      //   $scope.nItems = $scope.albums.length;
+      //   $scope.paginador.cambioDePagina();
+      //}
 
    };
 

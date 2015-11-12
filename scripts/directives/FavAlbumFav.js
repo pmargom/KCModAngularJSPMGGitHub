@@ -1,51 +1,49 @@
-angular.module("jeviteca").directive("favAlbumFav", function(Backend) {
+angular.module("jeviteca").directive("favAlbumFav", function(Backend, $timeout) {
 
    return {
       restrict: "E",
       templateUrl: "views/FavAlbumFav.html",
       scope: {
          album: "=",
-         numItems: "=",
-         onStarChange: "&"
+         albums: "="
 
       },
-      link: function (scope, elemento) {
+      link: function (scope) {
 
-         elemento.bind("click", function() {
+         scope.starChanged = function(evento) {
+
+            evento.stopPropagation();
 
             debugger;
-            // marcamos el elemento como favorito y lo guardamos en el local storage.
             if (typeof(Storage) !== "undefined") {
-               // primero, recupero la lista de de favoritos que ya pudiera existir
-               var favAlbums = JSON.parse(localStorage.getItem("favAlbums"));
-               if (favAlbums === null){
-                  favAlbums = [];
+
+               // first, load from the fav list from localstorage
+               scope.albums = JSON.parse(localStorage.getItem("favAlbums"));
+               if (scope.albums === null){
+                  scope.albums = [];
                }
-               var item = _.find(favAlbums, function(it){ return it.id === scope.album.id; });
-               if (typeof(item) === "undefined"){
-                  favAlbums.push(scope.album);
-               }
-               else {
+
+               // second, get the item that will be unmarked as fav
+               var item = _.find(scope.albums, function(it){ return it.id === scope.album.id; });
+               if (typeof(item) !== "undefined"){
+
                   debugger;
-                  var index = favAlbums.indexOf(item); // en teoría, item es igual que scope.album. Pero en la práctica no!!!
-                  favAlbums.splice(index, 1);
+                  var index = scope.albums.indexOf(item); // en teoría, item es igual que scope.album. Pero en la práctica no!!!
+                  $timeout(function() {
+                     scope.albums.splice(index, 1);
+                     localStorage.setItem("favAlbums", JSON.stringify(scope.albums));
+                  }, 1);
+                  //scope.albums.splice(index, 1);
                   // hide the row
-                  angular.element("#album" + scope.album.id).fadeOut('slow');
-                  // update the rows counter
-                  //angular.element("#nRowsFav").html(favAlbums.length)
-                  scope.numItems = favAlbums.length;
+                  //angular.element("#album" + scope.album.id).fadeOut('slow');
                }
-               localStorage.setItem("favAlbums", JSON.stringify(favAlbums));
+               //localStorage.setItem("favAlbums", JSON.stringify(scope.albums));
             }
             else {
                alert("Atención!: Su navegador no permite web storage.");
             }
 
-            // configuro la llamada al evetno y los parámetros que serán pasados
-            scope.onFavStarClick({ newNumberOfItems: scope.numItems });
-
-         });
-
+         };
       }
    };
 

@@ -9,19 +9,27 @@ angular.module("jeviteca").directive("elementoFavAlbum", function() {
       // Con scope establecemos la interfaz de comunicación.
       scope: {
          album: "=",
-         numItems: "=",
-         onFavItemClick: "&"
+         albums: "=",
+         onAlbumClick: "&"
       },
 
       link: function(scope, elemento) {
 
          elemento.bind("click", function() {
 
-            debugger;
+            //debugger;
             // configuro la llamada al evetno y los parámetros que serán pasados
-            scope.onFavItemClick({ idAlbum: scope.album.id });
+            scope.onAlbumClick({ idAlbum: scope.album.id });
 
          });
+
+
+         //scope.starChanged = function() {
+         //
+         //   debugger;
+         //   scope.onStarChange({ nIt: scope.nItems });
+         //
+         //};
 
       }
    };

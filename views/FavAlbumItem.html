@@ -1,23 +1,23 @@
 <td>
     <fav-album-fav
             album="album"
-            num-items="numItems"
+            albums="albums"
     ></fav-album-fav>
 </td>
 <td>
-    <img ng-src="images/{{ ::album.image }}" ng-if="::album.image" alt="Imagen" width="64px" height="64px" class="img-rounded" />
+    <img ng-src="images/{{ album.image }}" ng-if="album.image" alt="Imagen" width="64px" height="64px" class="img-rounded" />
 </td>
 <td>
-    <p>{{ ::album.title }}</p>
+    <p>{{ album.title }}</p>
     <div>
         <small>
-            {{ ::album.band | albumFirma:album.year }}
+            {{ album.band | albumFirma:album.year }}
         </small>
     </div>
 </td>
 <td>
-    <p>{{ ::album.genre.name}}</p>
+    <p>{{ album.genre.name }}</p>
 </td>
 <td class="celda-centrada">
-    {{ ::album.tracklist.length }}
+    {{ album.tracklist.length }}
 </td>
