@@ -19,7 +19,7 @@ angular.module("jeviteca").controller("FavAlbumListCtrl", function($scope, Album
          var primero = ($scope.paginador.paginaActual - 1) * $scope.paginador.elementosPorPagina;
          var ultimo = primero + $scope.paginador.elementosPorPagina;
          // Establecemos en la vista la página seleccionada.
-         debugger;
+         //debugger;
          $scope.albums = albums.slice(primero, ultimo);
       },
 
