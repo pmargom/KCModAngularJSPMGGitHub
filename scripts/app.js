@@ -35,7 +35,7 @@ angular.module("jeviteca").config(function($routeProvider) {
       }
    });
 
-   $routeProvider.when("/albums/Favourites", {
+   $routeProvider.when("/albums/favourites", {
       controller: "FavAlbumListCtrl",
       templateUrl: "views/FavAlbumList.html",
       resolve: {
@@ -57,6 +57,17 @@ angular.module("jeviteca").config(function($routeProvider) {
          }]
       }
    });
+
+   $routeProvider.when("/bands/favourites", {
+      controller: "FavBandListCtrl",
+      templateUrl: "views/FavBandList.html",
+      resolve: {
+         Bands: ["Backend", function(Backend) {
+            return Backend.getFavBands();
+         }]
+      }
+   });
+
    /*
    // Difinir la ruta de "Nuevo Post".
    $routeProvider.when("/nuevo", {

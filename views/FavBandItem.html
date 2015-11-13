@@ -1,5 +1,8 @@
 <td>
-    <band-fav band="band"></band-fav>
+    <fav-band-fav
+            band="band"
+            on-star-change="starChanged()"
+    ></fav-band-fav>
 </td>
 <td>
     <img ng-src="images/{{ band.albums[band.albums.length-1].image }}"
@@ -20,5 +23,5 @@
     {{ ::band.members.length }}
 </td>
 <td class="celda-centrada">
-    {{ ::band.albums.length }}
+    {{ ::band.bands.length }}
 </td>

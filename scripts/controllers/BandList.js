@@ -5,6 +5,7 @@ angular.module("jeviteca").controller("BandListCtrl", function($scope, Bands, $l
    // Almacenamos en local la lista de bandas para que no se muestren
    // todos directamente en la vista.
    var bands = Bands.data;
+   $scope.nItems = bands.length;
 
    // Establecemos las propiedades del paginador.
    $scope.paginador = {
@@ -22,14 +23,11 @@ angular.module("jeviteca").controller("BandListCtrl", function($scope, Bands, $l
       paginaActual: 1,
 
       // Total de elementos -albums-.
-      totalElementos: bands.length,
+      totalElementos: $scope.nItems,
 
       // Tamaño de página.
       elementosPorPagina: 4
    };
-
-   // Forzamos el cambio de página para que traiga la primera al entrar a la vista.
-   $scope.paginador.cambioDePagina();
 
    // Redirigir el navegador al detalle del post indicado.
    $scope.navegar = function(idBand) {
@@ -37,5 +35,8 @@ angular.module("jeviteca").controller("BandListCtrl", function($scope, Bands, $l
       // Forzamos el ciclo digest con ejecutando la redirección dentro de un $timeout.
       $timeout(function() { $location.path("/detalle/" + idBand); }, 100);
    };
+
+   // Forzamos el cambio de página para que traiga la primera al entrar a la vista.
+   $scope.paginador.cambioDePagina();
 
 });

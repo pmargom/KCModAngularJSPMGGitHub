@@ -1,6 +1,6 @@
 <div class="coleccion-table">
-    <!-- Pintamos una tabla para mostrar los álbumes -->
-    <div class="only-fav"><a href="#/albums/favourites">See only favourites</a></div>
+    <!-- Pintamos una tabla para mostrar los bandas -->
+    <a href="#/bands">Bands</a> > Favourites
     <table class="table">
         <thead>
             <th></th>
@@ -10,15 +10,17 @@
             <th class="celda-centrada">Tracks</th>
         </thead>
         <tbody>
-        <tr ng-repeat="album in albums track by album.id"
-            elemento-album
-            album="album"
-            on-item-click="navegar(idAlbum)"></tr>
+        <tr id="band{{band.id}}" ng-repeat="band in bands track by band.id"
+            elemento-fav-band
+            band="band"
+            on-band-click="navegar(idBand)"
+            on-star-change="deleteFav(idBand)"
+            ></tr>
         </tbody>
     </table>
     <!-- Pintamos un control de paginación. Esto es una directiva de Angular UI Bootstrap -->
     <div class="panel panel-default">
-        <div class="panel-footer">{{ nItems }} rows</div>
+        <div class="panel-footer"><span id="nRowsFav">{{ nItems }}</span> rows</div>
     </div>
     <uib-pagination
             ng-change="paginador.cambioDePagina()"

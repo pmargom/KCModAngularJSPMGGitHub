@@ -1,5 +1,5 @@
 
-// Controlador encargado de la lógica correspondiente con vista de la lista de álbumes.
+// Controlador encargado de la lógica correspondiente con vista de la lista de bandas.
 angular.module("jeviteca").controller("FavBandListCtrl", function($scope, Bands, $location, $timeout) {
 
    // Almacenamos en local la lista de álbumes para que no se muestren

@@ -8,11 +8,12 @@ angular.module("jeviteca").provider("Backend", function($httpProvider) {
 
          return {
 
-            // obtenemos la lsita de álbumes
+            // get the list of albums
             getAlbums: function() {
                return $http.get("data/albums.json");
             },
 
+            // get the list of albums marked as favourite
             getFavAlbums: function(){
 
                //debugger;
@@ -25,10 +26,23 @@ angular.module("jeviteca").provider("Backend", function($httpProvider) {
                return favAlbums;
             },
 
-            // obtenemos la lista de bandas
+            // get the list of bands
             getBands: function() {
                return $http.get("data/bands.json");
-            }
+            },
+
+            // get the list of bands marked as favourite
+            getFavBands: function(){
+
+               //debugger;
+               var favBands = [];
+               //debugger;
+               if (typeof(Storage) !== "undefined") {
+
+                  favBands = JSON.parse(localStorage.getItem("favBands"));
+               }
+               return favBands;
+            },
 
          };
       }]
