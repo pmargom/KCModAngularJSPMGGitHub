@@ -4,6 +4,7 @@ angular.module("jeviteca").controller("AlbumListCtrl", function($scope, Albums, 
 
    // Almacenamos en local la lista de álbumes para que no se muestren
    // todos directamente en la vista.
+   //debugger;
    var albums = Albums.data;
    $scope.nItems = albums.length;
 

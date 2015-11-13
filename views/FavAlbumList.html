@@ -13,8 +13,8 @@
         <tr id="album{{album.id}}" ng-repeat="album in albums track by album.id"
             elemento-fav-album
             album="album"
-            albums="albums"
             on-album-click="navegar(idAlbum)"
+            on-star-change="deleteFav(idAlbum)"
             ></tr>
         </tbody>
     </table>

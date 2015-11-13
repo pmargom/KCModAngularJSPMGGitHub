@@ -1,10 +1,10 @@
-angular.module("jeviteca").directive("albumFav", function(Backend) {
+angular.module("jeviteca").directive("albumFav", function() {
 
    return {
       restrict: "E",
       templateUrl: "views/AlbumFav.html",
       scope: {
-         album: "="
+         album: "=",
       },
       link: function (scope) {
 
@@ -16,12 +16,14 @@ angular.module("jeviteca").directive("albumFav", function(Backend) {
             // marcamos el elemento como favorito y lo guardamos en el local storage.
             if (typeof(Storage) !== "undefined") {
                // primero, recupero la lista de de favoritos que ya pudiera existir
+               //debugger;
                var favAlbums = JSON.parse(localStorage.getItem("favAlbums"));
                if (favAlbums === null){
                   favAlbums = [];
                }
                var item = _.find(favAlbums, function(it){ return it.id === scope.album.id; });
                if (typeof(item) === "undefined"){
+                  //debugger;
                   favAlbums.push(scope.album);
                }
                else {

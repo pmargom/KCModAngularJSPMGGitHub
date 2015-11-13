@@ -15,6 +15,7 @@ angular.module("jeviteca").provider("Backend", function($httpProvider) {
 
             getFavAlbums: function(){
 
+               //debugger;
                var favAlbums = [];
                //debugger;
                if (typeof(Storage) !== "undefined") {

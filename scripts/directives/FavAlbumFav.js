@@ -5,43 +5,43 @@ angular.module("jeviteca").directive("favAlbumFav", function(Backend, $timeout) 
       templateUrl: "views/FavAlbumFav.html",
       scope: {
          album: "=",
-         albums: "="
-
+         onStarChange: "&"
       },
       link: function (scope) {
+
+         //debugger;
+         //scope.onStarChange({ idAlbum: scope.album.id });
+
 
          scope.starChanged = function(evento) {
 
             evento.stopPropagation();
-
-            debugger;
+         
+            //debugger;
             if (typeof(Storage) !== "undefined") {
-
+         
                // first, load from the fav list from localstorage
-               scope.albums = JSON.parse(localStorage.getItem("favAlbums"));
-               if (scope.albums === null){
-                  scope.albums = [];
+               var favAlbums = JSON.parse(localStorage.getItem("favAlbums"));
+               if (favAlbums === null){
+                  favAlbums = [];
                }
-
+         
                // second, get the item that will be unmarked as fav
-               var item = _.find(scope.albums, function(it){ return it.id === scope.album.id; });
+               var item = _.find(favAlbums, function(it){ return it.id === scope.album.id; });
                if (typeof(item) !== "undefined"){
-
-                  debugger;
-                  var index = scope.albums.indexOf(item); // en teoría, item es igual que scope.album. Pero en la práctica no!!!
-                  $timeout(function() {
-                     scope.albums.splice(index, 1);
-                     localStorage.setItem("favAlbums", JSON.stringify(scope.albums));
-                  }, 1);
-                  //scope.albums.splice(index, 1);
-                  // hide the row
-                  //angular.element("#album" + scope.album.id).fadeOut('slow');
+         
+                  //debugger;
+                  var index = favAlbums.indexOf(item); // en teoría, item es igual que scope.album. Pero en la práctica no!!!
+                  favAlbums.splice(index, 1);
                }
-               //localStorage.setItem("favAlbums", JSON.stringify(scope.albums));
+               localStorage.setItem("favAlbums", JSON.stringify(favAlbums));
             }
             else {
                alert("Atención!: Su navegador no permite web storage.");
             }
+      
+            // notify to the parent element in order to perform task in the controller side
+            scope.onStarChange({ idAlbum: scope.album.id });
 
          };
       }

@@ -19,6 +19,7 @@ angular.module("jeviteca").controller("FavAlbumListCtrl", function($scope, Album
          var primero = ($scope.paginador.paginaActual - 1) * $scope.paginador.elementosPorPagina;
          var ultimo = primero + $scope.paginador.elementosPorPagina;
          // Establecemos en la vista la página seleccionada.
+         debugger;
          $scope.albums = albums.slice(primero, ultimo);
       },
 
@@ -42,16 +43,18 @@ angular.module("jeviteca").controller("FavAlbumListCtrl", function($scope, Album
 
    $scope.deleteFav = function(idAlbum){
 
-      //var item = _.find(albums, function(it){ return it.id === idAlbum; });
-      //if (typeof(item) !== "undefined"){
-      //
-      //   debugger;
-      //   var albums = Albums;
-      //   var index = albums.indexOf(item);
-      //   albums.splice(index, 1);
-      //   $scope.nItems = $scope.albums.length;
-      //   $scope.paginador.cambioDePagina();
-      //}
+      //debugger;
+      var item = _.find(albums, function(it){ return it.id === idAlbum; });
+      if (typeof(item) !== "undefined"){
+
+         //debugger;
+         var index = albums.indexOf(item);
+         albums.splice(index, 1);
+         $scope.albums = albums;
+         $scope.nItems = $scope.albums.length;
+         $scope.paginador.totalElementos = $scope.nItems;
+         $scope.paginador.cambioDePagina();
+      }
 
    };
 
