@@ -16,7 +16,8 @@ angular.module("jeviteca").config(function(BackendProvider, Properties) {
 // la barra de progreso que se muestra con las peticiones HTTP.
 angular.module("jeviteca").config(function(cfpLoadingBarProvider) {
 
-   cfpLoadingBarProvider.includeSpinner = false
+   cfpLoadingBarProvider.includeSpinner = false;
+
 });
 
 // En fase de config inyectamos $routeProvider para configurar las rutas de la aplicación.
@@ -25,8 +26,6 @@ angular.module("jeviteca").config(function($routeProvider) {
    $routeProvider.when("/albums", {
       controller: "AlbumListCtrl",
       templateUrl: "views/AlbumList.html",
-      // En "resolve" establecemos todas aquellas dependencias que tenga el controlador.
-      // Tenemos que usar la anotación de array en línea.
       resolve: {
          Albums: ["Backend", function(Backend) {
             return Backend.getAlbums();
@@ -44,11 +43,21 @@ angular.module("jeviteca").config(function($routeProvider) {
       }
    });
 
+   $routeProvider.when("/albums/detalle/:idAlbum", {
+      controller: "AlbumDetailsCtrl",
+      templateUrl: "views/AlbumDetails.html",
+      resolve: {
+         Album: ["Backend", "$route", function(Backend, $route) {
+            return Backend.getAlbum($route.current.params.idAlbum);
+         }]
+      }
+   });
+
    $routeProvider.when("/bands", {
       controller: "BandListCtrl",
       templateUrl: "views/BandList.html",
       // En "resolve" establecemos todas aquellas dependencias que tenga el controlador.
-      // Tenemos que usar la anotación de array en línea.
+      
       resolve: {
          Bands: ["Backend", function(Backend) {
             return Backend.getBands();
@@ -62,6 +71,16 @@ angular.module("jeviteca").config(function($routeProvider) {
       resolve: {
          Bands: ["Backend", function(Backend) {
             return Backend.getFavBands();
+         }]
+      }
+   });
+   
+   $routeProvider.when("/bands/detalle/:idBand", {
+      controller: "BandDetailsCtrl",
+      templateUrl: "views/BandDetails.html",
+      resolve: {
+         Band: ["Backend", "$route", function(Backend, $route) {
+            return Backend.getBand($route.current.params.idBand);
          }]
       }
    });

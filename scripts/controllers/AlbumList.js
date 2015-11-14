@@ -34,7 +34,7 @@ angular.module("jeviteca").controller("AlbumListCtrl", function($scope, Albums, 
    $scope.navegar = function(idAlbum) {
 
       // Forzamos el ciclo digest con ejecutando la redirección dentro de un $timeout.
-      $timeout(function() { $location.path("/detalle/" + idAlbum); }, 100);
+      $timeout(function() { $location.path("/albums/detalle/" + idAlbum); }, 100);
    };
 
    // bringing the first page of results

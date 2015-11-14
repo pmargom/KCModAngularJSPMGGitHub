@@ -1,4 +1,4 @@
-// Filtro que escribe una firma dados un album y una fecha.
+
 angular.module("jeviteca").filter("albumFirma", function() {
 
    // Los filtros siempre retornes funciones.

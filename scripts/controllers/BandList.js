@@ -33,7 +33,7 @@ angular.module("jeviteca").controller("BandListCtrl", function($scope, Bands, $l
    $scope.navegar = function(idBand) {
 
       // Forzamos el ciclo digest con ejecutando la redirección dentro de un $timeout.
-      $timeout(function() { $location.path("/detalle/" + idBand); }, 100);
+      $timeout(function() { $location.path("/bands/detalle/" + idBand); }, 100);
    };
 
    // Forzamos el cambio de página para que traiga la primera al entrar a la vista.

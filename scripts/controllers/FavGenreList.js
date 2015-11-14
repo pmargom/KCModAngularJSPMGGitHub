@@ -33,6 +33,12 @@ angular.module("jeviteca").controller("FavGenreListCtrl", function($scope, Genre
       elementosPorPagina: 4
    };
 
+   $scope.navegar = function(idGenre) {
+
+      // Forzamos el ciclo digest con ejecutando la redirección dentro de un $timeout.
+      $timeout(function() { $location.path("/genres/detalle/" + idGenre); }, 100);
+   };
+
    $scope.deleteFav = function(idGenre){
 
       //debugger;

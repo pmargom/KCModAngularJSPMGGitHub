@@ -36,9 +36,8 @@ angular.module("jeviteca").controller("FavAlbumListCtrl", function($scope, Album
    // Redirigir el navegador al detalle del band indicado.
    $scope.navegar = function(idAlbum) {
 
-      alert('navegando fav band')
       // Forzamos el ciclo digest con ejecutando la redirección dentro de un $timeout.
-      //$timeout(function() { $location.path("/detalle/" + idAlbum); }, 100);
+      $timeout(function() { $location.path("/albums/detalle/" + idAlbum); }, 100);
    };
 
    $scope.deleteFav = function(idAlbum){

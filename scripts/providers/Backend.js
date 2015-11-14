@@ -1,5 +1,5 @@
 
-angular.module("jeviteca").provider("Backend", function($httpProvider) {
+angular.module("jeviteca").provider("Backend", function() {
 
    return {
 
@@ -26,6 +26,31 @@ angular.module("jeviteca").provider("Backend", function($httpProvider) {
                return favAlbums;
             },
 
+            getAlbum: function(idAlbum) {
+
+               var defer = $q.defer();
+
+               $http.get("data/albums.json").then(
+                  function (resp) {
+
+                     var item = _.find(resp.data, function(it){ return it.id == idAlbum; }); // con === no lo encuentra
+                     if (typeof(item) !== "undefined") {
+                        defer.resolve(item);
+                     }
+                     else {
+                        defer.reject(null);
+                     }
+                  },
+                  function (error) {
+                     debugger;
+                     defer.reject(error);
+                  }
+               );
+
+               return defer.promise;
+
+            },
+
             // get the list of bands
             getBands: function() {
                return $http.get("data/bands.json");
@@ -42,6 +67,31 @@ angular.module("jeviteca").provider("Backend", function($httpProvider) {
                   favBands = JSON.parse(localStorage.getItem("favBands"));
                }
                return favBands;
+            },
+
+            getBand: function(idBand) {
+
+               var defer = $q.defer();
+
+               $http.get("data/bands.json").then(
+                  function (resp) {
+
+                     var item = _.find(resp.data, function(it){ return it.id == idBand; }); // con === no lo encuentra
+                     if (typeof(item) !== "undefined") {
+                        defer.resolve(item);
+                     }
+                     else {
+                        defer.reject(null);
+                     }
+                  },
+                  function (error) {
+                     debugger;
+                     defer.reject(error);
+                  }
+               );
+
+               return defer.promise;
+
             },
 
             // get the list of genres
