@@ -4,6 +4,7 @@
         <li><a href="#/albums">Albums</a></li>
         <li class="active">Favourites</li>
     </ol>
+    <label>Filter: <input ng-model="searchText"></label>
     <table class="table">
         <thead>
             <th></th>
@@ -13,7 +14,7 @@
             <th class="celda-centrada">Tracks</th>
         </thead>
         <tbody>
-        <tr id="album{{album.id}}" ng-repeat="album in albums track by album.id"
+        <tr ng-repeat="album in albums | filter:searchText"
             elemento-fav-album
             album="album"
             on-album-click="navegar(idAlbum)"

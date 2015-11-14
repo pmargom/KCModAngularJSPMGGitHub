@@ -3,6 +3,7 @@
     <div class="breadcrumb">
         <a href="#/albums/favourites">See only favourites</a>
     </div>
+    <label>Filter: <input ng-model="searchText"></label>
     <table class="table">
         <thead>
             <tr>
@@ -14,7 +15,7 @@
             </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="album in albums track by album.id"
+        <tr ng-repeat="album in albums | filter:searchText"
             elemento-album
             album="album"
             on-item-click="navegar(idAlbum)"></tr>

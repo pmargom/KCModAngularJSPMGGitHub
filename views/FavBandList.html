@@ -4,6 +4,7 @@
         <li><a href="#/bands">Bands</a></li>
         <li class="active">Favourites</li>
     </ol>
+    <label>Filter: <input ng-model="searchText"></label>
     <table class="table">
         <thead>
             <th></th>
@@ -13,7 +14,7 @@
             <th class="celda-centrada">Tracks</th>
         </thead>
         <tbody>
-        <tr id="band{{band.id}}" ng-repeat="band in bands track by band.id"
+        <tr ng-repeat="band in bands | filter:searchText"
             elemento-fav-band
             band="band"
             on-band-click="navegar(idBand)"
