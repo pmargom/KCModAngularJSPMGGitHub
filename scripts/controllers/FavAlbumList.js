@@ -1,14 +1,14 @@
 
 // Controlador encargado de la lógica correspondiente con vista de la lista de álbumes.
-angular.module("jeviteca").controller("FavBandListCtrl", function($scope, Bands, $location, $timeout) {
+angular.module("jeviteca").controller("FavAlbumListCtrl", function($scope, Albums, $location, $timeout) {
 
    // Almacenamos en local la lista de álbumes para que no se muestren
    // todos directamente en la vista.
    //debugger;
-   var bands = Bands; // aquí no uso Band.data porque lo que llega no lo de vuelve $http.get sino favBands leído del localstorage
+   var albums = Albums; // aquí no uso Album.data porque lo que llega no lo de vuelve $http.get sino favAlbums leído del localstorage
    $scope.nItems = 0;
 
-   if (bands !== null) $scope.nItems = bands.length;
+   if (albums !== null) $scope.nItems = albums.length;
 
    // Establecemos las propiedades del paginador.
    $scope.paginador = {
@@ -20,13 +20,13 @@ angular.module("jeviteca").controller("FavBandListCtrl", function($scope, Bands,
          var ultimo = primero + $scope.paginador.elementosPorPagina;
          // Establecemos en la vista la página seleccionada.
          //debugger;
-         $scope.bands = bands.slice(primero, ultimo);
+         $scope.albums = albums.slice(primero, ultimo);
       },
 
       // Página actual.
       paginaActual: 1,
 
-      // Total de elementos -bands-.
+      // Total de elementos -albums-.
       totalElementos: $scope.nItems,
 
       // Tamaño de página.
@@ -34,24 +34,24 @@ angular.module("jeviteca").controller("FavBandListCtrl", function($scope, Bands,
    };
 
    // Redirigir el navegador al detalle del band indicado.
-   $scope.navegar = function(idBand) {
+   $scope.navegar = function(idAlbum) {
 
       alert('navegando fav band')
       // Forzamos el ciclo digest con ejecutando la redirección dentro de un $timeout.
-      //$timeout(function() { $location.path("/detalle/" + idBand); }, 100);
+      //$timeout(function() { $location.path("/detalle/" + idAlbum); }, 100);
    };
 
-   $scope.deleteFav = function(idBand){
+   $scope.deleteFav = function(idAlbum){
 
       //debugger;
-      var item = _.find(bands, function(it){ return it.id === idBand; });
+      var item = _.find(albums, function(it){ return it.id === idAlbum; });
       if (typeof(item) !== "undefined"){
 
          //debugger;
-         var index = bands.indexOf(item);
-         bands.splice(index, 1);
-         $scope.bands = bands;
-         $scope.nItems = $scope.bands.length;
+         var index = albums.indexOf(item);
+         albums.splice(index, 1);
+         $scope.albums = albums;
+         $scope.nItems = $scope.albums.length;
          $scope.paginador.totalElementos = $scope.nItems;
          $scope.paginador.cambioDePagina();
       }

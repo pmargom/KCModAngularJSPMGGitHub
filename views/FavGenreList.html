@@ -1,21 +1,19 @@
 <div class="coleccion-table">
-    <!-- Pintamos una tabla para mostrar los álbumes -->
-    <div class="only-fav"><a href="#/albums/favourites">See only favourites</a></div>
+    <!-- Pintamos una tabla para mostrar los genrees -->
+    <a href="#/genres">Genres</a> > Favourites
     <table class="table">
         <thead>
-            <tr>
-                <th></th>
-                <th></th>
-                <th>Name</th>
-                <th>Genre</th>
-                <th class="celda-centrada">Tracks</th>
-            </tr>
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Albums</th>
+        </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="album in albums track by album.id"
-            elemento-album
-            album="album"
-            on-item-click="navegar(idAlbum)"></tr>
+        <tr class="no-link" ng-repeat="genre in genres track by genre.id"
+            elemento-fav-genre
+            genre="genre"
+            on-star-change="deleteFav(idGenre)"></tr>
         </tbody>
     </table>
     <!-- Pintamos un control de paginación. Esto es una directiva de Angular UI Bootstrap -->

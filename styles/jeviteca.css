@@ -1,7 +1,26 @@
 
+.genre-album-image {
+    float: left;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
 table tbody tr:hover {
     background: #f4f4f4;
     cursor: pointer;
+}
+
+.col-fav-size {
+    width: 50px;
+}
+
+.col-fix-size {
+    width: 175px;
+}
+
+table tbody tr.no-link:hover {
+    background: #fff;
+    cursor: default;
 }
 
 .favorito>div:nth-child(1),

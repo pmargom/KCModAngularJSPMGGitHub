@@ -44,6 +44,26 @@ angular.module("jeviteca").provider("Backend", function($httpProvider) {
                return favBands;
             },
 
+            // get the list of genres
+            getGenres: function() {
+
+               return $http.get("data/genres.json")
+
+            },
+
+            // get the list of genres marked as favourite
+            getFavGenres: function(){
+
+               //debugger;
+               var favGenres = [];
+               //debugger;
+               if (typeof(Storage) !== "undefined") {
+
+                  favGenres = JSON.parse(localStorage.getItem("favGenres"));
+               }
+               return favGenres;
+            },
+
          };
       }]
    };

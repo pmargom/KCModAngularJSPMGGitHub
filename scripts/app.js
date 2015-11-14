@@ -22,7 +22,6 @@ angular.module("jeviteca").config(function(cfpLoadingBarProvider) {
 // En fase de config inyectamos $routeProvider para configurar las rutas de la aplicación.
 angular.module("jeviteca").config(function($routeProvider) {
 
-   // Definir la ruta de "Albums".
    $routeProvider.when("/albums", {
       controller: "AlbumListCtrl",
       templateUrl: "views/AlbumList.html",
@@ -45,7 +44,6 @@ angular.module("jeviteca").config(function($routeProvider) {
       }
    });
 
-   // Definir la ruta de "Bands".
    $routeProvider.when("/bands", {
       controller: "BandListCtrl",
       templateUrl: "views/BandList.html",
@@ -68,26 +66,26 @@ angular.module("jeviteca").config(function($routeProvider) {
       }
    });
 
-   /*
-   // Difinir la ruta de "Nuevo Post".
-   $routeProvider.when("/nuevo", {
-      controller: "NuevoPostCtrl",
-      templateUrl: "views/NuevoPost.html"
-   });
-
-   // Definir la ruta de "Detalle de Post".
-   $routeProvider.when("/detalle/:idPost", {
-      controller: "DetallePostCtrl",
-      templateUrl: "views/DetallePost.html",
-      // En "resolve" establecemos todas aquellas dependencias que tenga el controlador.
-      // Tenemos que usar la anotación de array en línea.
+   $routeProvider.when("/genres", {
+      controller: "GenreListCtrl",
+      templateUrl: "views/GenreList.html",
       resolve: {
-         Post: ["Backend", "$route", function(Backend, $route) {
-            return Backend.obtenerPost($route.current.params.idPost);
+         Genres: ["Backend", function(Backend) {
+            return Backend.getGenres();
          }]
       }
    });
-*/
+
+   $routeProvider.when("/genres/favourites", {
+      controller: "FavGenreListCtrl",
+      templateUrl: "views/FavGenreList.html",
+      resolve: {
+         Genres: ["Backend", function(Backend) {
+            return Backend.getFavGenres();
+         }]
+      }
+   });
+
    // Configuramos una ruta por defecto.
    $routeProvider.otherwise({
       redirectTo: "/albums"
