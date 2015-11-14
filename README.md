@@ -13,6 +13,10 @@ Para las secciones anteriores, se han programado diversas funcionalidaes con el 
 
     Para ello se han combinado directivas, servicios, filtros, etc.
 
+### Demo
+
+Existe una demo de la aplicación web. Ver [demo]
+
 ### Version
 0.1.0
 
@@ -26,6 +30,10 @@ Jeviteca usa un número de proyectos open source para funcionar correctamente:
     [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does it's job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
 
     [angular.js]: <https://angularjs.org/>
+    [demo]: <http://pmg-kc.cloudapp.net/>
+
+
+
 
 
 
