@@ -3,13 +3,22 @@ angular.module("jeviteca").directive("elementoGenre", function() {
 
    return {
 
-      restrict: "A",
+      restrict: "",
 
       templateUrl: "views/GenreItem.html",
 
       // Con scope establecemos la interfaz de comunicación.
       scope: {
-         genre: "="
+         genre: "=",
+         onGenreClick: "&"
+      },
+
+      link: function(scope, elemento) {
+
+         elemento.bind("click", function() {
+
+            scope.onGenreClick({ idGenre: scope.genre.id });
+         });
       }
    };
 });

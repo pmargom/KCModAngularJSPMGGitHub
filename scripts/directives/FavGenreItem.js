@@ -9,10 +9,18 @@ angular.module("jeviteca").directive("elementoFavGenre", function() {
       // Con scope establecemos la interfaz de comunicación.
       scope: {
          genre: "=",
+         onGenreClick: "&",
          onStarChange: "&"
       },
 
       link: function(scope, elemento) {
+
+         elemento.bind("click", function() {
+
+            // configuro la llamada al evetno y los parámetros que serán pasados
+            scope.onGenreClick({ idGenre: scope.genre.id });
+
+         });
 
          scope.starChanged = function() {
 

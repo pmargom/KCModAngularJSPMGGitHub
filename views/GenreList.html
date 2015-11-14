@@ -12,9 +12,10 @@
             </tr>
         </thead>
         <tbody>
-        <tr class="no-link" ng-repeat="genre in genres track by genre.id"
+        <tr ng-repeat="genre in genres track by genre.id"
             elemento-genre
-            genre="genre"></tr>
+            genre="genre"
+            on-genre-click="navegar(idGenre)"></tr>
         </tbody>
     </table>
     <!-- Pintamos un control de paginación. Esto es una directiva de Angular UI Bootstrap -->

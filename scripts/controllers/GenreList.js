@@ -33,8 +33,9 @@ angular.module("jeviteca").controller("GenreListCtrl", function($scope, Genres, 
    // Redirigir el navegador al detalle del album indicado.
    $scope.navegar = function(idGenre) {
 
+      //debugger;
       // Forzamos el ciclo digest con ejecutando la redirección dentro de un $timeout.
-      $timeout(function() { $location.path("/detalle/" + idGenre); }, 100);
+      $timeout(function() { $location.path("/genres/detalle/" + idGenre); }, 100);
    };
 
    // bringing the first page of results

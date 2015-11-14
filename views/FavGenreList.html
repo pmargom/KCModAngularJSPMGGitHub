@@ -13,10 +13,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr class="no-link" ng-repeat="genre in genres track by genre.id"
+        <tr ng-repeat="genre in genres track by genre.id"
             elemento-fav-genre
             genre="genre"
-            on-star-change="deleteFav(idGenre)"></tr>
+            on-star-change="deleteFav(idGenre)"
+            on-genre-click="navegar(idGenre)"></tr>
         </tbody>
     </table>
     <!-- Pintamos un control de paginación. Esto es una directiva de Angular UI Bootstrap -->

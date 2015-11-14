@@ -22,7 +22,6 @@ angular.module("jeviteca").directive("elementoFavBand", function() {
 
          });
 
-
          scope.starChanged = function() {
 
             scope.onStarChange({ idBand: scope.band.id });

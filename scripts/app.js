@@ -105,6 +105,16 @@ angular.module("jeviteca").config(function($routeProvider) {
       }
    });
 
+   $routeProvider.when("/genres/detalle/:idGenre", {
+      controller: "GenreDetailsCtrl",
+      templateUrl: "views/GenreDetails.html",
+      resolve: {
+         Genre: ["Backend", "$route", function(Backend, $route) {
+            return Backend.getGenre($route.current.params.idGenre);
+         }]
+      }
+   });
+
    // Configuramos una ruta por defecto.
    $routeProvider.otherwise({
       redirectTo: "/albums"

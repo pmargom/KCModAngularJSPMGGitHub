@@ -114,6 +114,31 @@ angular.module("jeviteca").provider("Backend", function() {
                return favGenres;
             },
 
+            getGenre: function(idGenre) {
+
+               var defer = $q.defer();
+
+               $http.get("data/genres.json").then(
+                  function (resp) {
+
+                     var item = _.find(resp.data, function(it){ return it.id == idGenre; }); // con === no lo encuentra
+                     if (typeof(item) !== "undefined") {
+                        defer.resolve(item);
+                     }
+                     else {
+                        defer.reject(null);
+                     }
+                  },
+                  function (error) {
+                     debugger;
+                     defer.reject(error);
+                  }
+               );
+
+               return defer.promise;
+
+            },
+
          };
       }]
    };
